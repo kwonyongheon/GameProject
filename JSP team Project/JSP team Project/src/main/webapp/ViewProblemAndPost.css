@@ -1,0 +1,391 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.post-meta .post-author {
+    font-size: 16px;
+    color: #555;
+}
+
+.post-stats {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+.post-title {
+    color: #333;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 10px 0;
+}
+
+.post-content {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.recommend-btn-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recommend-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.recommend-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none; /* 밑줄 없애기 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.delete1-btn {
+    background-color: #ff0000;
+}
+
+.delete1-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.comment-container {
+    margin-top: 20px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-header h2 {
+    margin: 0;
+}
+
+.comment-header button {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.comment-header button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    position: relative;
+}
+
+.comment-body {
+    margin: 0;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.comment-buttons button {
+    margin-left: 5px;
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.comment-buttons button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.report-btn {
+    background-color: #dc3545;
+}
+
+.report-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.reply-btn {
+    background-color: #ffc107;
+}
+
+.reply-btn:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+.like-btn {
+    background-color: #17a2b8;
+}
+
+.like-btn:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+.like-btn.active {
+    background-color: #138496;
+    color: white;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.edit-btn, .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.edit-btn {
+    right: 80px;
+    background-color: #007bff;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 추가된 부분 */
+table {
+    margin: auto;
+    width: 90%;
+    border-radius: 5px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.num {
+    width: 10%;
+}
+
+.title {
+    width: 50%;
+    text-align: left;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.write-btn {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.write-btn button {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.write-btn button:hover {
+    background-color: #45a049;
+}
+
+.nested-comment {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid #ddd;
+}
+
+.reply {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    position: relative;
+}
+
+.delete-btn1, .edit-btn1 {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.edit1-btn {
+    right: 68px;
+    background-color: #007bff;
+}
+
+.delete1-btn:hover {
+    background-color: #cc0000;
+}
+
+.edit1-btn:hover {
+    background-color: #0056b3;
+}
+
+.recommend-btn.recommended {
+    background-color: #ffc0cb;
+}
