@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -14,6 +13,7 @@ public class Weapon : MonoBehaviour
     public int curAmmo; // 현재 남아 있는 탄 개수
 
     public Camera playerCamera; // 플레이어 카메라
+    public AudioSource gunshotSound; // 발사 사운드 추가
 
     private float lastShotTime; // 마지막으로 발사한 시간
     private float cooldown; // 무기별 쿨타임
@@ -53,6 +53,12 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shot()
     {
+        // 발사 사운드 재생
+        if (gunshotSound != null)
+        {
+            gunshotSound.Play();
+        }
+
         // 발사 로직
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); // 화면 중앙에서 Ray 발사
         RaycastHit hit;

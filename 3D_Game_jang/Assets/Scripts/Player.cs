@@ -52,6 +52,12 @@ public class Player : MonoBehaviour
 
     private PlayerAiming playerAiming; // PlayerAiming 컴포넌트
 
+    public AudioClip jumpSound; // 점프 사운드 클립
+    private AudioSource audioSource; // 오디오 소스 컴포넌트
+
+    public Text healthText; // 체력 표시 텍스트
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -64,12 +70,20 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // AudioSource 컴포넌트 가져오기
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing!");
+        }
+
         // Crosshair를 DontDestroyOnLoad로 설정
         if (crosshair != null)
         {
             DontDestroyOnLoad(crosshair.gameObject);
         }
     }
+
 
     private void Start()
     {
@@ -108,6 +122,19 @@ public class Player : MonoBehaviour
         {
             crosshair.enabled = false; // 초기화 시 Crosshair 비활성화
         }
+
+        // healthText 컴포넌트 가져오기
+        GameObject healthTextObject = GameObject.Find("HealthText");
+        if (healthTextObject != null)
+        {
+            healthText = healthTextObject.GetComponent<Text>();
+        }
+        else
+        {
+            Debug.LogError("HealthText GameObject not found!");
+        }
+
+        UpdateHealthUI(); // 초기 체력 표시 업데이트
     }
 
     private void Update()
@@ -185,8 +212,15 @@ public class Player : MonoBehaviour
         {
             yVelocity = jumpForce; // 점프 힘 적용
             jumpCount++; // 점프 횟수 증가
+
+            // 점프 사운드 재생
+            if (jumpSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
     }
+
 
     private void GetInput()
     {
@@ -341,6 +375,7 @@ public class Player : MonoBehaviour
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        UpdateHealthUI(); // 체력 UI 업데이트
         if (currentHealth <= 0 && !isDead)
         {
             StartCoroutine(Die());
@@ -434,5 +469,17 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthText != null)
+        {
+            healthText.text = "Health: " + currentHealth.ToString();
+        }
+        else
+        {
+            Debug.LogError("HealthText component is missing!");
+        }
     }
 }
